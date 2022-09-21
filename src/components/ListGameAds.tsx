@@ -39,7 +39,7 @@ export function ListGameAds() {
     }
 
     const getAds = async (id: string) => {
-        await axios(`http://genshinapi.ddns.net:3332/games/${id}/ads`)
+        await axios(`https://genshinapi.ddns.net:3333/games/${id}/ads`)
             .then(response => setGameAds(response.data))
     }
 
