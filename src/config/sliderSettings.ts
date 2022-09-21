@@ -12,7 +12,6 @@ export const settings = {
               settings: {
                   slidesToShow: 5,
                   slidesToScroll: 3,
-                  dots: true
               }
           },
           {
@@ -20,7 +19,6 @@ export const settings = {
               settings: {
                   slidesToShow: 4,
                   slidesToScroll: 3,
-                  dots: true
               }
           },
           {
@@ -28,7 +26,7 @@ export const settings = {
               settings: {
                   slidesToShow: 3,
                   slidesToScroll: 3,
-                  dots: true
+                
               }
           },
           {
