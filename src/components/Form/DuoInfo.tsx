@@ -15,7 +15,7 @@ interface Days {
 }
 export function DuoInfo({ header, info, bool = false }: DuoInfoProps) {
     return (
-        <div className="mb-2  h-[52px]">
+        <div className="mb-2 h-[52px] w-[200px]">
             <span className="text-zinc-300 block">{header}</span>
 
             {(() => {
