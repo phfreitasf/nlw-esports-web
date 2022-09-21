@@ -20,6 +20,7 @@ export function CreateAdModal() {
     const [games, setGames] = useState<Game[]>([])
     const [weekDays, setWeekDays] = useState<string[]>([])
     const [useVoiceChannel, setUseVoiceChannel] = useState(false)
+    
 
     useEffect(() => {
         axios('https://genshinapi.ddns.net:3333/games').then(response => {
@@ -31,7 +32,7 @@ export function CreateAdModal() {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement)
         const data = Object.fromEntries(formData)
-
+        console.log(data.game)
         if (!data.name) return
         try {
             await axios.post(`https://genshinapi.ddns.net:3333/games/${data.game}/ads`, {
@@ -66,7 +67,7 @@ export function CreateAdModal() {
                                         <Select.Icon >
                                             <GameController size={24} />
                                         </Select.Icon>
-                                        <Select.Value placeholder="Selecione um jogo" />
+                                        <Select.Value placeholder='League of Legends'/>
                                     </div>
                                     <CaretDown size={24} className="self-end" />
                                 </Select.Trigger>
@@ -145,7 +146,8 @@ export function CreateAdModal() {
                         </label>
                         <footer className='mt-4 flex justify-end gap-4'>
                             <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold'>Cancelar</Dialog.Close>
-                            <button className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-2' type="submit">
+                            <button 
+                            className={' bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-2'} type="submit">
                                 <GameController className='h-6 w-6' />
                                 Encontrar Duo</button>
                         </footer>
