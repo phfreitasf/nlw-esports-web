@@ -5,7 +5,7 @@ import { AdBanner } from "./AdBanner"
 import Slider from "react-slick";
 import { ButtonForm } from "./Form/Button";
 
-import {settings} from '../config/sliderSettings'
+import {settings} from '../config/adsSliderSettings'
 
 export interface GameAds {
     id: string,
@@ -65,7 +65,7 @@ export function ListGameAds() {
 
     return (
 
-        <div id="ads" className="px-20 mt-32">
+        <div id="ads" className="container mx-auto px-20 mt-32">
             <div className="w-20 my-2">
             <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>

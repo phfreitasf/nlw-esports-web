@@ -10,7 +10,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { Link } from 'react-router-dom';
 
 import Slider from "react-slick";
-import {settings} from './config/sliderSettings'
+import {settings} from './config/gamesSliderSettings'
 
 
 
