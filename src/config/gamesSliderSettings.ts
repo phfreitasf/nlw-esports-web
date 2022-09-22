@@ -3,7 +3,7 @@ export const settings = {
     responsive: {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 1535 },
-            items: 7
+            items: 6
         },
         LargeDesktop: {
             breakpoint: { max: 1535, min: 1280 },
