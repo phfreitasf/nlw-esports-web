@@ -24,7 +24,7 @@ export function AdBanner(props: GameAds) {
             <DuoInfo header='Tempo de jogo' info={`${props.yearsPlaying} anos`} />
             <DuoInfo header='Disponibilidade' info={`${props.weekDays} dia(s) • ${props.hourStart} - ${props.hourEnd}`} />
             <DuoInfo header='Chamada de audio?' info={props.useVoiceChannel ? 'Sim' : 'Não'} bool={true} />
-            <ButtonForm  text={discordTag} />
+            <ButtonForm  text={discordTag || 'Não informado'} />
         </div>
     )
 }
