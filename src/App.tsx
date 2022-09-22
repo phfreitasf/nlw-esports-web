@@ -1,7 +1,8 @@
 import { GameBanner } from './components/GameBanner'
 import './styles/main.css'
 import logoImg from './assets/Logo.svg'
-
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { useEffect, useState } from 'react'
@@ -9,8 +10,8 @@ import { CreateAdModal } from './components/CreateAdModal'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link } from 'react-router-dom';
 
-import Slider from "react-slick";
-import { settings } from './config/gamesSliderSettings'
+
+import {settings} from './config/gamesSliderSettings'
 import { DownloadApkBanner } from './components/DownloadApkBanner'
 
 
@@ -47,7 +48,7 @@ function App() {
       </h1>
 
       <div className="w-full mt-16">
-        <Slider {...settings}>
+        <Carousel {...settings}>
           {games.map(game => {
             return (
 
@@ -62,7 +63,7 @@ function App() {
               </div>
             )
           })}
-        </Slider>
+        </Carousel>
 
       </div>
       <div className='self-start'>

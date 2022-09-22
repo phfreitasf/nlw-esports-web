@@ -1,67 +1,33 @@
 export const settings = {
-    centerPadding: "0px",
-    infinite:true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-      responsive: [
-          {
-              breakpoint: 1550,
-              settings: {
-                  slidesToShow: 6,
-                  slidesToScroll: 3,
-              }
-          },
-          {
-              breakpoint: 1300,
-              settings: {
-                  slidesToShow: 5,
-                  slidesToScroll: 3,
-                  centerMode: false,
-                  centerPadding: "30px",
-              }
-          },
-          {
-              breakpoint: 1024,
-              settings: {
-                infinite:true,
-                  slidesToShow: 4,
-                  slidesToScroll: 3,
-                  initialSlide: 0,
-                  centerMode: false,
-                  centerPadding: "30px",
-              }
-          },
-          {
-              breakpoint: 768,
-              settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
-                  initialSlide: 5,
-                  centerMode: false,
-                  
-              }
-          },
-          {
-              breakpoint: 600,
-              settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  initialSlide: 1,
-                  centerMode: true,
-                  centerPadding: "40px",
 
-              }
-          },
-          {
-              breakpoint: 480,
-              settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  centerMode: true,
-                  initialSlide: 1,
-                  centerPadding: "10px",
-              }
-          }
-      ]
-  };
+    responsive: {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 1535 },
+            items: 7
+        },
+        LargeDesktop: {
+            breakpoint: { max: 1535, min: 1280 },
+            items: 6
+        },
+        desktop: {
+            breakpoint: { max: 1280, min: 1024 },
+            items: 5,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 950 },
+            items: 4
+        },
+        medium: {
+            breakpoint: { max: 950, min: 606 },
+            items: 3
+        },
+        mobile: {
+            breakpoint: { max: 606, min: 420 },
+            items: 2,
+        },
+        smartWatchHaha: {
+            breakpoint: { max: 420, min: 0 },
+            items: 1,
+        }
+    },
+};

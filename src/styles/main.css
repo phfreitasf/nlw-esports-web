@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-multiple-carousel__arrow--left {
+    left: calc(0%) !important;
+    padding-right: 10px !important;
+    background:unset !important;
+    transform:scale(1.2)
+}
+.react-multiple-carousel__arrow--right {
+    right: calc(0%) !important;
+    padding-left: 10px !important;
+    background:unset !important;
+    transform:scale(1.2)
+}

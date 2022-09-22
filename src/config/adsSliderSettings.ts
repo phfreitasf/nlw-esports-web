@@ -1,64 +1,25 @@
-export const settings = {
-    infinite: false,
-    centerMode: true,
-    centerPadding: "0px",
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    responsive: [
-        {
-            breakpoint: 1550,
-            settings: {
-                slidesToShow: 5,
-                slidesToScroll: 3,
-            }
+export const settings = {    
+    
+    responsive: {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 1535 },
+            items: 5
         },
-        {
-            breakpoint: 1300,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 3,
-                centerPadding: "-30px",
-            }
+        LargeDesktop: {
+            breakpoint: { max: 1535, min: 1280 },
+            items: 4
         },
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                centerPadding: "-40px",
-            }
+        desktop: {
+            breakpoint: { max: 1280, min: 1024 },
+            items: 3,
         },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                initialSlide: 3,
-                centerMode: true,
-
-            }
+        tablet: {
+            breakpoint: { max: 1024, min: 606 },
+            items: 2
         },
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                initialSlide: 0,
-                centerMode: true,
-                centerPadding: "50px",
-
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                centerMode: true,
-                centerPadding: "-10px",
-
-            }
+        mobile: {
+            breakpoint: { max: 606, min: 0 },
+            items: 1,           
         }
-    ]
+    },
 };

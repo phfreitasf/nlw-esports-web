@@ -1,11 +1,12 @@
 import axios from "axios"
+import 'react-multi-carousel/lib/styles.css';
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { AdBanner } from "./AdBanner"
-import Slider from "react-slick";
 import { ButtonForm } from "./Form/Button";
 
-import {settings} from '../config/adsSliderSettings'
+import Carousel from 'react-multi-carousel';
+import { settings } from '../config/adsSliderSettings'
 
 export interface GameAds {
     id: string,
@@ -30,8 +31,7 @@ export function ListGameAds() {
     const [game, setGame] = useState<Game>(Object)
     const [gameAds, setGameAds] = useState<GameAds[]>([])
     const { gameTitle } = useParams()
-    settings.infinite = gameAds.length > 3
-   
+
 
     const getGameId = async () => {
         await axios('https://genshinapi.ddns.net:3333/games')
@@ -67,7 +67,7 @@ export function ListGameAds() {
 
         <div id="ads" className="container mx-auto px-20 mt-32">
             <div className="w-20 my-2 mx-auto lg:m-0 lg:my-2">
-            <Link to="/"><ButtonForm text="Voltar" /></Link>
+                <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>
             <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2">
                 <img className="rounded-lg" src={game.bannerUrl} alt={game.title} />
@@ -77,7 +77,7 @@ export function ListGameAds() {
             </div>
             <div className="pb-20">
                 {/* <div className="flex items-center justify-start flex-wrap gap-5 pb-20"> */}
-                <Slider {...settings}>
+                <Carousel {...settings}>
                     {gameAds.map((ad) => {
                         return (
                             <AdBanner
@@ -92,7 +92,7 @@ export function ListGameAds() {
                         )
 
                     })}
-                </Slider>
+                </Carousel>
             </div>
 
         </div>
