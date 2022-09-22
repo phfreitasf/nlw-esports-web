@@ -10,7 +10,6 @@ import { CreateAdModal } from './components/CreateAdModal'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link } from 'react-router-dom';
 
-
 import {settings} from './config/gamesSliderSettings'
 import { DownloadApkBanner } from './components/DownloadApkBanner'
 
@@ -47,8 +46,8 @@ function App() {
         Seu <span className='bg-nlw-gradient bg-clip-text text-transparent'>duo</span> está aqui.
       </h1>
 
-      <div className="w-full mt-16">
-        <Carousel {...settings}>
+      <div className="w-full mt-16 gd-carousel-wrapper">
+        <Carousel  className="gd-carousel" {...settings}>
           {games.map(game => {
             return (
 

@@ -2,15 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.gd-carousel-wrapper {
+    position:relative!important;
+}
+
+.gd-carousel {
+    position:unset!important;
+}
+
+.react-multiple-carousel__arrow {
+        position:absolute!important;
+}
 .react-multiple-carousel__arrow--left {
-    left: calc(0%) !important;
-    padding-right: 10px !important;
-    background:unset !important;
-    transform:scale(1.2)
+        left: calc(-3%)!important
 }
 .react-multiple-carousel__arrow--right {
-    right: calc(0%) !important;
-    padding-left: 10px !important;
-    background:unset !important;
-    transform:scale(1.2)
+        right: calc(-3%)!important
 }
+
+
+@media (max-width: 1340px) {
+.react-multiple-carousel__arrow--left {
+        left: calc(0%)!important
+    }
+.react-multiple-carousel__arrow--right {
+        right: calc(0%)!important
+    }
+    }
