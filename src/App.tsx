@@ -10,7 +10,8 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { Link } from 'react-router-dom';
 
 import Slider from "react-slick";
-import {settings} from './config/gamesSliderSettings'
+import { settings } from './config/gamesSliderSettings'
+import { DownloadApkBanner } from './components/DownloadApkBanner'
 
 
 
@@ -25,8 +26,8 @@ function App() {
   }
 
   const [games, setGames] = useState<Game[]>([])
-  settings.infinite = games.length > 3
   
+
 
   useEffect(() => {
     fetch('https://genshinapi.ddns.net:3333/games')
@@ -47,20 +48,20 @@ function App() {
 
       <div className="w-full mt-16">
         <Slider {...settings}>
-        {games.map(game => {
-          return (
-            
-            <div key={game.id} >
-              <Link to={`/ads/${game.title.replaceAll(' ', '-').toLowerCase()}` }>
-                <GameBanner 
-                  gameId={game.id}
-                  title={game.title}
-                  bannerUrl={game.bannerUrl}
-                  adsCount={game._count.ads} />
-              </Link>
-            </div>
-          )
-        })}
+          {games.map(game => {
+            return (
+
+              <div key={game.id} >
+                <Link to={`/ads/${game.title.replaceAll(' ', '-').toLowerCase()}`}>
+                  <GameBanner
+                    gameId={game.id}
+                    title={game.title}
+                    bannerUrl={game.bannerUrl}
+                    adsCount={game._count.ads} />
+                </Link>
+              </div>
+            )
+          })}
         </Slider>
 
       </div>
@@ -71,6 +72,8 @@ function App() {
         <CreateAdBanner />
         <CreateAdModal />
       </Dialog.Root>
+
+      <DownloadApkBanner />
     </div>
 
   )

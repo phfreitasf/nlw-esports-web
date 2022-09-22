@@ -66,7 +66,7 @@ export function ListGameAds() {
     return (
 
         <div id="ads" className="container mx-auto px-20 mt-32">
-            <div className="w-20 my-2">
+            <div className="w-20 my-2 mx-auto lg:m-0 lg:my-2">
             <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>
             <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2">
