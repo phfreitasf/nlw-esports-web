@@ -1,31 +1,38 @@
 export const settings = {
+    rows: 1,
     swipeable: true,
     draggable: false,
     renderButtonGroupOutside : true,
     responsive: {
         superLargeDesktop: {
-            breakpoint: { max: 4000, min: 1535 },
-            items: 6
+            breakpoint: { max: 9999, min: 2000 },
+            items: 6,
+            slidesToSlide: 2
         },
         LargeDesktop: {
-            breakpoint: { max: 1535, min: 1280 },
-            items: 6
+            breakpoint: { max: 2000, min: 1280 },
+            items: 6,
+            slidesToSlide: 2
         },
         desktop: {
             breakpoint: { max: 1280, min: 1024 },
             items: 5,
+            slidesToSlide: 2
         },
         tablet: {
             breakpoint: { max: 1024, min: 950 },
-            items: 4
+            items: 4,
+            slidesToSlide: 2
         },
         medium: {
             breakpoint: { max: 950, min: 606 },
-            items: 3
+            items: 3,
+            slidesToSlide: 2
         },
         mobile: {
             breakpoint: { max: 606, min: 420 },
             items: 2,
+            slidesToSlide: 2
         },
         smartWatchHaha: {
             breakpoint: { max: 420, min: 0 },

@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #8B5CF6 #;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #131217;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #8B5CF6;
+    border-radius: 10px;
+    border: 3px solid #131217;
+  }
+
+
+  input[type="time"]::-webkit-calendar-picker-indicator 
+  { 
+    margin-right: -5px;
+    padding: 0;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+  }
+
+
+
 .gd-carousel-wrapper {
     position:relative!important;
 }

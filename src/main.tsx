@@ -6,15 +6,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { ListGameAds } from './components/ListGameAds';
+import { FixedNavBar } from './components/FixedNavBar';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [{
-
-    }]
   },
   {
     path: 'ads/:gameTitle',
@@ -23,5 +21,8 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <RouterProvider router={router} />
+  <div>
+    <FixedNavBar />
+    <RouterProvider router={router} />
+  </div>
 )

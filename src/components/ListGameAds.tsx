@@ -7,6 +7,7 @@ import { ButtonForm } from "./Form/Button";
 
 import Carousel from 'react-multi-carousel';
 import { settings } from '../config/adsSliderSettings'
+import { EmptyAds } from "./EmptyAds";
 
 export interface GameAds {
     id: string,
@@ -75,9 +76,13 @@ export function ListGameAds() {
                 <span className="font-normal text-zinc-400">Conecte-se e começe a jogar</span>
 
             </div>
-            <div className="pb-20">
-                {/* <div className="flex items-center justify-start flex-wrap gap-5 pb-20"> */}
-                <Carousel {...settings}>
+            {(() => {
+                if(gameAds.length == 0) {
+                   return (<EmptyAds/>)
+                }
+            })()}
+            <div className="pb-20 gd-carousel-wrapper">
+                <Carousel className="gd-carousel" {...settings}>
                     {gameAds.map((ad) => {
                         return (
                             <AdBanner
@@ -90,7 +95,6 @@ export function ListGameAds() {
                                 hourStart={ad.hourStart}
                                 hourEnd={ad.hourEnd} />
                         )
-
                     })}
                 </Carousel>
             </div>
