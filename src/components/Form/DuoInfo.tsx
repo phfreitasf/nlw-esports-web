@@ -1,6 +1,6 @@
 interface DuoInfoProps {
     header: string,
-    info: string,
+    info: any,
     bool?: boolean
     days? : boolean
 }
@@ -20,9 +20,9 @@ export function DuoInfo({ header, info, bool = false }: DuoInfoProps) {
 
             {(() => {
                 if (!bool) {
-                return <span className="text-white font-bold block">{info}</span>
+                return <span className="text-white font-bold block w-[180px]">{info}</span>
                 }
-                return <span className={info == 'Sim' ? 'text-green-600' : 'text-red-600' + ' font-bold block'}>{info}</span>
+                return <span className={info == 'Sim' ? 'text-green-600' : 'text-red-600' + ' font-bold block '}>{info}</span>
             })()}
 
         </div>

@@ -26,6 +26,8 @@ function App() {
     }
   }
 
+  const [open, setOpen] = useState(false);
+
   const [games, setGames] = useState<Game[]>([])
   
 
@@ -68,9 +70,9 @@ function App() {
       <div className='self-start'>
       </div>
 
-      <Dialog.Root>
+      <Dialog.Root open={open} onOpenChange={setOpen}>
         <CreateAdBanner />
-        <CreateAdModal />
+        <CreateAdModal setOpen={setOpen}/>
       </Dialog.Root>
 
       <DownloadApkBanner />

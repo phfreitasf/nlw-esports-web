@@ -12,7 +12,7 @@ import { EmptyAds } from "./EmptyAds";
 export interface GameAds {
     id: string,
     name: string,
-    weekDays: string,
+    weekDays: string[],
     useVoiceChannel: boolean,
     yearsPlaying: number,
     hourStart: string,
@@ -89,7 +89,7 @@ export function ListGameAds() {
                                 key={ad.id}
                                 id={ad.id}
                                 name={ad.name}
-                                weekDays={`${ad.weekDays.length}`}
+                                weekDays={ad.weekDays}
                                 useVoiceChannel={ad.useVoiceChannel}
                                 yearsPlaying={ad.yearsPlaying}
                                 hourStart={ad.hourStart}

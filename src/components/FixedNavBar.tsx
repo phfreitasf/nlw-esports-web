@@ -1,9 +1,20 @@
-import { ButtonForm } from "./Form/Button";
+import { useScrollPosition } from "../hooks/useScrollPositionHook";
 import { ButtonDiscord } from "./Form/ButtonDiscord";
 
+
+
+
 export function FixedNavBar() {
+
+    function classNames(...classes : any) {
+        return classes.filter(Boolean).join(' ')
+      }
+
+    const scrollPosition = useScrollPosition()
+
+
     return (
-        <nav className="bg-[#34225B] p-2 mt-0 fixed w-full z-10 top-0 bg-opacity-80">
+        <nav className={classNames(scrollPosition > 0 ? 'bg-[#221379]': '', " transition-colors p-2 mt-0 w-full fixed z-10 top-0 bg-opacity-80")}>
         <div className="container mx-auto flex items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <a className="no-underline hover:text-white hover:no-underline" href="/">
