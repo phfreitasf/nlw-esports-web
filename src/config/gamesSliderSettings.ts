@@ -1,7 +1,7 @@
 export const settings = {
     rows: 1,
     swipeable: true,
-    draggable: false,
+    draggable: true,
     renderButtonGroupOutside : true,
     responsive: {
         superLargeDesktop: {

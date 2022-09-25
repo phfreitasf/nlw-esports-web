@@ -8,13 +8,13 @@ import axios from "axios";
 export function AdBanner(props: GameAds) {
 
     const Days = {
-        0: 'Domingo',
-        1: 'Segunda',
-        2: 'Terça',
-        3: 'Quarta',
-        4: 'Quinta',
-        5: 'Sexta',
-        6: 'Sábado',
+        0: 'Dom',
+        1: 'Seg',
+        2: 'Ter',
+        3: 'Qua',
+        4: 'Qui',
+        5: 'Sex',
+        6: 'Sáb',
     }
     const [days, setDays] = useState<string[]>([])
     const [discordTag, setDiscordTag] = useState('Mostrar Discord')
@@ -36,12 +36,14 @@ export function AdBanner(props: GameAds) {
     }
 
     return (
-        <div className="bg-[#2A2634] m-auto lg:m-0 rounded-lg overflow-hidden w-[220px] px-6 py-4">
+        <div className="relative px-1 max-w-[216px] m-auto">
+        <div className="bg-[#2A2634] relative rounded-lg  px-6 py-4">
             <DuoInfo header='Nome' info={props.name} />
             <DuoInfo header='Tempo de jogo' info={`${props.yearsPlaying} anos`} />
-            <DuoInfo header='Disponibilidade' info={days} />
+            <DuoInfo header='Disponibilidade' info={days.join(',')} />
             <DuoInfo header='Chamada de audio?' info={props.useVoiceChannel ? 'Sim' : 'Não'} bool={true} />
             <ButtonForm onClick={() => { getDiscordTag(props.id) }} text={discordTag || "Não disponível"} />
+        </div>
         </div>
     )
 }

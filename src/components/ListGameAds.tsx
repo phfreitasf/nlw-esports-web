@@ -66,7 +66,7 @@ export function ListGameAds() {
 
     return (
 
-        <div id="ads" className="container mx-auto px-20 mt-32">
+        <div id="ads" className="container m-auto px-20 mt-32">
             <div className="w-20 my-2 mx-auto lg:m-0 lg:my-2">
                 <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>
@@ -77,11 +77,11 @@ export function ListGameAds() {
 
             </div>
             {(() => {
-                if(gameAds.length == 0) {
-                   return (<EmptyAds/>)
+                if (gameAds.length == 0) {
+                    return (<EmptyAds />)
                 }
             })()}
-            <div className="pb-20 gd-carousel-wrapper">
+            <div className="gd-carousel-wrapper relative">
                 <Carousel className="gd-carousel" {...settings}>
                     {gameAds.map((ad) => {
                         return (

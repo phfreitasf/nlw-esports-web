@@ -6,12 +6,12 @@ export const settings = {
     responsive: {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 1535 },
-            items: 5,
+            items: 6,
             slidesToSlide: 2
         },
         LargeDesktop: {
             breakpoint: { max: 1535, min: 1280 },
-            items: 4,
+            items: 5,
             slidesToSlide: 2
         },
         desktop: {
