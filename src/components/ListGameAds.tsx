@@ -66,13 +66,14 @@ export function ListGameAds() {
 
     return (
 
-        <div id="ads" className="container m-auto px-20 mt-32">
+        <div id="ads" className="container m-auto px-20 mt-32 pb-20">
             <div className="w-20 my-2 mx-auto lg:m-0 lg:my-2">
                 <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>
-            <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2">
+            <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2 text-center">
                 <img className="rounded-lg" src={game.bannerUrl} alt={game.title} />
-                <span className="text-white font-bold text-2xl">{game.title}</span>
+                <span className="bg-nlw-gradient bg-clip-text text-transparent font-bold text-2xl md:text-3xl">{game.title}</span>
+                <span className="font-normal text-zinc-100">{`${gameAds.length} anúncios disponíveis!`}</span>
                 <span className="font-normal text-zinc-400">Conecte-se e começe a jogar</span>
 
             </div>
@@ -82,7 +83,7 @@ export function ListGameAds() {
                 }
             })()}
             <div className="gd-carousel-wrapper relative">
-                <Carousel className="gd-carousel" {...settings}>
+                <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet","medium","mobile","smartWatchHaha"]} {...settings}>
                     {gameAds.map((ad) => {
                         return (
                             <AdBanner

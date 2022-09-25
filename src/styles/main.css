@@ -45,18 +45,18 @@
         position:absolute!important;
 }
 .react-multiple-carousel__arrow--left {
-        left: calc(-3%)!important
+        left: calc(-3.1%)!important
 }
 .react-multiple-carousel__arrow--right {
-        right: calc(-3%)!important
+        right: calc(-3.1%)!important
 }
 
 
-@media (max-width: 1340px) {
+@media (max-width: 768px) {
 .react-multiple-carousel__arrow--left {
-        left: calc(0%)!important
+        left: calc(-15%)!important;
     }
 .react-multiple-carousel__arrow--right {
-        right: calc(0%)!important
+        right: calc(-15%)!important;
     }
     }

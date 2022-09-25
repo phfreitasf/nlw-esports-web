@@ -27,16 +27,19 @@ export const settings = {
         medium: {
             breakpoint: { max: 950, min: 606 },
             items: 3,
-            slidesToSlide: 2
+            slidesToSlide: 2,
+            arrows:false
         },
         mobile: {
             breakpoint: { max: 606, min: 420 },
             items: 2,
-            slidesToSlide: 2
+            slidesToSlide: 2,
+            arrows:false
         },
         smartWatchHaha: {
             breakpoint: { max: 420, min: 0 },
             items: 1,
+            arrows:false
         }
     },
 };

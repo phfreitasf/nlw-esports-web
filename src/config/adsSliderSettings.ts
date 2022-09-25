@@ -1,7 +1,6 @@
 export const settings = {    
-    rows: 1,
     swipeable: true,
-    draggable: false,
+    draggable: true,
     renderButtonGroupOutside : true,
     responsive: {
         superLargeDesktop: {
@@ -22,11 +21,13 @@ export const settings = {
         tablet: {
             breakpoint: { max: 1024, min: 606 },
             items: 2,
-            slidesToSlide: 2
+            slidesToSlide: 2,
+            arrow:false
         },
         mobile: {
             breakpoint: { max: 606, min: 0 },
-            items: 1,           
+            items: 1,   
+            arrow:false        
         }
     },
 };

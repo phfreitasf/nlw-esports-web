@@ -34,8 +34,7 @@ function App() {
 
   useEffect(() => {
     axios('https://genshinapi.ddns.net:3333/games')
-      .then(response => response = response.data.sort((a: Game, b: Game) => b._count.ads - (a._count.ads)))
-      .then(response  => setGames(response))
+      .then(response => setGames(response.data.sort((a: Game, b: Game) => b._count.ads - (a._count.ads)))) //organiza os jogos por quantidade de anúncios
   }, [])
 
 
@@ -49,7 +48,7 @@ function App() {
       </h1>
 
       <div className="w-full mt-16 gd-carousel-wrapper">
-        <Carousel className="gd-carousel" {...settings}>
+        <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet","medium","mobile","smartWatchHaha"]} {...settings}>
           {games.map(game => {
             return (
 
