@@ -69,7 +69,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
         const data = Object.fromEntries(formData)
         if (!data.game) {notify('Selecione um jogo!') ; return}
         if (!data.name) {notify('Insira um nome!') ; return}
-        if (!data.weekDays) {notify('Selecione os dias que costuma jogar!') ; return}
+        if (weekDays.length == 0) {notify('Selecione os dias que costuma jogar!'); return}
         if (!data.hourStart || !data.hourEnd) {notify('Preencha o horário!') ; return}
         if (!discordValidation()) {
             notify('Discord Inválido!')
