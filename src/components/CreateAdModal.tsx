@@ -11,10 +11,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface CreateAdModalProps {
-    setOpen : Dispatch<SetStateAction<boolean>>
+    setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export function CreateAdModal({setOpen} : CreateAdModalProps) {
+export function CreateAdModal({ setOpen }: CreateAdModalProps) {
     interface Game {
         id: string,
         title: string,
@@ -29,7 +29,7 @@ export function CreateAdModal({setOpen} : CreateAdModalProps) {
     const [discordTag, setDiscordTag] = useState('')
 
     // configuração do toast de mensagem
-    const toastSettings : any = {
+    const toastSettings: {} = {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -41,11 +41,11 @@ export function CreateAdModal({setOpen} : CreateAdModalProps) {
     }
 
     //discord
-    const notify = (toastText : string) => toast.error(toastText, toastSettings);
+    const notify = (toastText: string) => toast.error(toastText, toastSettings);
     const handleDiscordChange = (e: any) => setDiscordTag(e.target.value)
     const discordValidation = () => {
         const regEx = /^.{3,32}#[0-9]{4}$/g
-        return (regEx.test(discordTag)) 
+        return (regEx.test(discordTag))
     }
     //
 
@@ -67,10 +67,14 @@ export function CreateAdModal({setOpen} : CreateAdModalProps) {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement)
         const data = Object.fromEntries(formData)
-        if(!discordValidation()) {
+        if (!data.game) {notify('Selecione um jogo!') ; return}
+        if (!data.name) {notify('Insira um nome!') ; return}
+        if (!data.weekDays) {notify('Selecione os dias que costuma jogar!') ; return}
+        if (!data.hourStart || !data.hourEnd) {notify('Preencha o horário!') ; return}
+        if (!discordValidation()) {
             notify('Discord Inválido!')
             return
-        }; 
+        };
         try {
             await axios.post(`https://genshinapi.ddns.net:3333/games/${data.game}/ads`, {
                 name: data.name,
@@ -83,8 +87,10 @@ export function CreateAdModal({setOpen} : CreateAdModalProps) {
             })
             setOpenSucess(true)
         }
-        catch (err) {
-            console.log(err)
+        catch (err: any) {
+            err.response.data.errors.map((error: any) => notify(
+            `Parametro : '${error.param}'
+             Mensagem '${error.msg}'`))
         }
     }
 
