@@ -10,7 +10,7 @@ import { CreateAdModal } from './components/CreateAdModal'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link } from 'react-router-dom';
 
-import {settings} from './config/gamesSliderSettings'
+import { settings } from './config/gamesSliderSettings'
 import { DownloadApkBanner } from './components/DownloadApkBanner'
 import axios from 'axios';
 
@@ -27,9 +27,10 @@ function App() {
   }
 
   const [open, setOpen] = useState(false);
-
+  const [isMoving, setIsMoving] = useState(false)
   const [games, setGames] = useState<Game[]>([])
-  
+
+
 
 
   useEffect(() => {
@@ -41,14 +42,16 @@ function App() {
   return (
 
     <div id="home" className="max-w-[1250px] mx-auto flex flex-col items-center m-20">
-          
+
       <img src={logoImg} alt="logo nlw" />
       <h1 className='text-2xl sm:text-6xl text-white font-black mt-20'>
         Seu <span className='bg-nlw-gradient bg-clip-text text-transparent'>duo</span> está aqui.
       </h1>
 
       <div className="w-full mt-16 gd-carousel-wrapper">
-        <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet","medium","mobile","smartWatchHaha"]} {...settings}>
+        <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet", "medium", "mobile", "smartWatchHaha"]} {...settings}
+          beforeChange={() => setIsMoving(true)}
+          afterChange={() => setIsMoving(false)}>
           {games.map(game => {
             return (
 
@@ -58,7 +61,9 @@ function App() {
                     gameId={game.id}
                     title={game.title}
                     bannerUrl={game.bannerUrl}
-                    adsCount={game._count.ads} />
+                    adsCount={game._count.ads}
+                    isMoving={isMoving}
+                  />
                 </Link>
               </div>
             )
@@ -71,7 +76,7 @@ function App() {
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <CreateAdBanner />
-        <CreateAdModal setOpen={setOpen}/>
+        <CreateAdModal setOpen={setOpen} />
       </Dialog.Root>
 
       <DownloadApkBanner />
