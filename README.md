@@ -4,12 +4,11 @@ Projeto prático ministrado pela RocketSeat com foco em ReacJS + ReactNative + N
 
 Estou acrescentando várias personalizações para agregar meu conhecimento geral em React
 
+API atualmente hospedada em uma máquina na AWS
 App web rodando em : https://findduo.vercel.app/
 
 
 # Todo List
-
--Integração de login com Discord
 
 -Criar modal para aparecer o nome do discord apenas quando clicar no botão
 
@@ -18,5 +17,7 @@ App web rodando em : https://findduo.vercel.app/
 -Adicionar mascaras e validações nos inputs
 
 -Melhorar a interação do Slider
+
+-Integração de login com Discord
 
 -?
