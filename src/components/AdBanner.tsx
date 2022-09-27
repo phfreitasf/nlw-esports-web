@@ -2,11 +2,12 @@ import { DuoInfo } from "./Form/DuoInfo";
 import { GameAds } from "./ListGameAds";
 import { ButtonForm } from "../components/Form/Button"
 import { useEffect, useState } from "react";
+import ReactTooltip from 'react-tooltip';
 import axios from "axios";
 
 
 export function AdBanner(props: GameAds) {
-//como os dias sao valores fixos criei esse objeto pra ajudar na hora de exibir
+    //como os dias sao valores fixos criei esse objeto pra ajudar na hora de exibir
     const Days = {
         0: 'Dom',
         1: 'Seg',
@@ -41,13 +42,16 @@ export function AdBanner(props: GameAds) {
 
     return (
         <div className="relative px-0 max-w-[216px] m-auto lg:m-0">
-        <div className="bg-[#2A2634] relative rounded-lg  px-6 py-4">
-            <DuoInfo header='Nome' info={props.name} />
-            <DuoInfo header='Tempo de jogo' info={`${props.yearsPlaying} anos`} />
-            <DuoInfo header='Disponibilidade' info={days.join(',')} />
-            <DuoInfo header='Chamada de audio?' info={props.useVoiceChannel ? 'Sim' : 'Não'} bool={true} />
-            <ButtonForm onClick={() => { getDiscordTag(props.id) }} text={discordTag || "Não disponível"} />
-        </div>
+            <div className="bg-[#2A2634] relative rounded-lg  px-6 py-4">
+                <DuoInfo header='Nome' info={props.name} />
+                <DuoInfo header='Tempo de jogo' info={`${props.yearsPlaying} anos`} />
+                <span data-tip={`${days.join(',')} de ${props.hourStart} - ${props.hourEnd}`} data-place='right' data-class=''>
+                <DuoInfo header='Disponibilidade' info={days.join(',')} />
+                </span>
+                <DuoInfo header='Chamada de audio?' info={props.useVoiceChannel ? 'Sim' : 'Não'} bool={true} />
+                <ButtonForm onClick={() => { getDiscordTag(props.id) }} text={discordTag || "Não disponível"} />
+                <ReactTooltip />
+            </div>
         </div>
     )
 }

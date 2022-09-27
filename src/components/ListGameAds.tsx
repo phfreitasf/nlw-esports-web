@@ -70,11 +70,11 @@ export function ListGameAds() {
             <div className="w-20 my-2 mx-auto lg:m-0 lg:my-2">
                 <Link to="/"><ButtonForm text="Voltar" /></Link>
             </div>
-            <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2 text-center">
+            <div className="flex flex-col bg-transparent lg:items-start justify-start items-center w-full m-0 mb-8 gap-2 text-center">
                 <img className="rounded-lg" src={game.bannerUrl} alt={game.title} />
                 <span className="bg-nlw-gradient bg-clip-text text-transparent font-bold text-2xl md:text-4xl stroke font-serif">{game.title}</span>
-                <span className="font-normal text-zinc-100">{`${gameAds.length} anúncios disponíveis!`}</span>
-                <span className="font-normal text-zinc-400">Conecte-se e começe a jogar</span>
+                <span className="font-normal text-white">{`${gameAds.length} anúncio(s) disponíveis!`}</span>
+                <span className="font-normal text-white">Conecte-se e começe a jogar</span>
 
             </div>
             {(() => {
