@@ -44,7 +44,7 @@ function App() {
     <div id="home" className="max-w-[1250px] mx-auto flex flex-col items-center m-20">
 
       <img src={logoImg} alt="logo nlw" />
-      <h1 className='text-2xl sm:text-6xl text-white font-black mt-20'>
+      <h1 className='text-4xl sm:text-6xl text-white font-black mt-20'>
         Seu <span className='bg-nlw-gradient bg-clip-text text-transparent'>duo</span> está aqui.
       </h1>
 

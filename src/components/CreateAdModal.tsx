@@ -9,6 +9,7 @@ import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react"
 import { SuccessModal } from "./SucessModal";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { DatePicker } from "./Form/DatePicker";
 
 interface CreateAdModalProps {
     setOpen: Dispatch<SetStateAction<boolean>>
@@ -24,8 +25,6 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
         }
     }
     // validação inputs 
-    const [nome, setNome] = useState('')
-    const [anos, setAnos] = useState(Number)
     const [discordTag, setDiscordTag] = useState('')
 
     // configuração do toast de mensagem
@@ -67,14 +66,11 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement)
         const data = Object.fromEntries(formData)
-        if (!data.game) {notify('Selecione um jogo!') ; return}
-        if (!data.name) {notify('Insira um nome!') ; return}
-        if (weekDays.length == 0) {notify('Selecione os dias que costuma jogar!'); return}
-        if (!data.hourStart || !data.hourEnd) {notify('Preencha o horário!') ; return}
-        if (!discordValidation()) {
-            notify('Discord Inválido!')
-            return
-        };
+        if (!data.game) { notify('Selecione um jogo!'); return }
+        if (!data.name) { notify('Insira um nome!'); return }
+        if (weekDays.length == 0) { notify('Selecione os dias que costuma jogar!'); return }
+        if (!data.hourStart || !data.hourEnd) { notify('Preencha o horário!'); return }
+        if (!discordValidation()) { notify('Discord Inválido!'); return };
         try {
             await axios.post(`https://genshinapi.ddns.net:3333/games/${data.game}/ads`, {
                 name: data.name,
@@ -89,7 +85,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
         }
         catch (err: any) {
             err.response.data.errors.map((error: any) => notify(
-            `Parametro : '${error.param}'
+                `Parametro : '${error.param}'
              Mensagem '${error.msg}'`))
         }
     }
@@ -98,7 +94,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
         <Dialog.Portal>
             <Dialog.Overlay className='bg-black/60 inset-0 fixed'>
                 <Dialog.Content
-                    className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-md shadow-violet-800'>
+                    className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-md shadow-violet-800 scale-[0.80] md:scale-100 transition ease-in-out duration-700'>
                     <Dialog.Title className="text-3xl font-black ">Publique um anúncio</Dialog.Title>
 
                     <form onSubmit={async (event) => { handleCreateAd(event).then() }} className='mt-8 flex flex-col gap-4'>
@@ -170,8 +166,8 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
                             <div className='flex flex-col gap-2 flex-1 ml-2'>
                                 <label htmlFor="hourStart">Qual horário do dia?</label>
                                 <div className='grid grid-cols-2 gap-2'>
-                                    <Input required type="time" name="hourStart" id="hourStart" placeholder='De' />
-                                    <Input required type="time" name="hourEnd" id="hourEnd" placeholder='Até' />
+                                    <DatePicker required type="time" name="hourStart" id="hourStart" placeholder='De' />
+                                    <DatePicker required type="time" name="hourEnd" id="hourEnd" placeholder='Até' />
                                 </div>
                             </div>
                         </div>
@@ -192,7 +188,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
                             {/* o Dialog abaixo é referente ao arquivo SucessModal */}
                             <Dialog.Root open={openSucess}>
                                 <button
-                                    className={'bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-2'} type="submit">
+                                    className={'bg-sky-700 px-5 h-12 rounded-md font-semibold flex items-center gap-2 hover:bg-sky-900 transition-colors'} type="submit">
                                     <GameController className='h-6 w-6' />
                                     Encontrar Duo
                                 </button>

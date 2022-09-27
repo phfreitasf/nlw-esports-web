@@ -12,8 +12,8 @@ module.exports = {
       colors: {
       },
       backgroundImage: {
-        galaxy: "url('/fundo4.png')",
-        'nlw-gradient': 'linear-gradient(89.86deg, #9572FC 23.08%, #43E7AD 50.94%, #E1D55D 80.57%);',
+        galaxy: "url('/fundo2.png')",
+        'nlw-gradient': 'linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);',
         'gradient-games': 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%);'
       }
     },

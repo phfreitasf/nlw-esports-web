@@ -6,7 +6,7 @@ interface ButtonFormProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function ButtonForm({ text, ...rest }: ButtonFormProps) {
     return (
-        <button {...rest} className="rounded-lg bg-[#8B5CF6] w-full p-1  text-white font-semibold hover:bg-violet-700 transition-colors">
+        <button {...rest} className="rounded-lg bg-sky-700 w-full p-1  text-white font-semibold hover:bg-sky-900 transition-colors">
             {text}
         </button>
     )
