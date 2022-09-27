@@ -1,6 +1,6 @@
 import { GameBanner } from './components/GameBanner'
 import './styles/main.css'
-import logoImg from './assets/Logo.svg'
+import logoImg from './assets/logo.png'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -44,8 +44,8 @@ function App() {
     <div id="home" className="max-w-[1250px] mx-auto flex flex-col items-center m-20">
 
       <img src={logoImg} alt="logo nlw" />
-      <h1 className='text-4xl sm:text-6xl text-white font-black mt-20'>
-        Seu <span className='bg-nlw-gradient bg-clip-text text-transparent'>duo</span> está aqui.
+      <h1 className='text-4xl sm:text-6xl text-white font-black mt-10'>
+        Seu <span className='bg-nlw-gradient bg-clip-text text-transparent stroke'>duo</span> está aqui.
       </h1>
 
       <div className="w-full mt-16 gd-carousel-wrapper">

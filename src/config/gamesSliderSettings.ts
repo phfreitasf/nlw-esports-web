@@ -1,5 +1,6 @@
 export const settings = {
-    rows: 1,
+    autoPlay: true,
+    infinite:true,
     swipeable: true,
     draggable: true,
     renderButtonGroupOutside : true,

@@ -1,7 +1,7 @@
 export const settings = {    
     swipeable: true,
     draggable: true,
-    renderButtonGroupOutside : true,
+    autoPlay: true,
     responsive: {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 1535 },

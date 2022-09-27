@@ -72,7 +72,7 @@ export function ListGameAds() {
             </div>
             <div className="flex flex-col  lg:items-start justify-start items-center w-full m-0 mb-8 gap-2 text-center">
                 <img className="rounded-lg" src={game.bannerUrl} alt={game.title} />
-                <span className="bg-nlw-gradient bg-clip-text text-transparent font-bold text-2xl md:text-3xl">{game.title}</span>
+                <span className="bg-nlw-gradient bg-clip-text text-transparent font-bold text-2xl md:text-4xl stroke font-serif">{game.title}</span>
                 <span className="font-normal text-zinc-100">{`${gameAds.length} anúncios disponíveis!`}</span>
                 <span className="font-normal text-zinc-400">Conecte-se e começe a jogar</span>
 
@@ -83,7 +83,7 @@ export function ListGameAds() {
                 }
             })()}
             <div className="gd-carousel-wrapper relative">
-                <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet","medium","mobile","smartWatchHaha"]} {...settings}>
+                <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet","medium","mobile","smartWatchHaha"]} {...settings} >
                     {gameAds.map((ad) => {
                         return (
                             <AdBanner
