@@ -5,11 +5,12 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Select from '@radix-ui/react-select';
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import axios from 'axios'
-import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useContext, useEffect, useState } from "react";
 import { SuccessModal } from "./SucessModal";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DatePicker } from "./Form/DatePicker";
+import discordContext from "../context/discordContext";
 
 interface CreateAdModalProps {
     setOpen: Dispatch<SetStateAction<boolean>>
@@ -53,12 +54,13 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
     const [useVoiceChannel, setUseVoiceChannel] = useState(false)
     const [openSucess, setOpenSucess] = useState(false)
 
-
+    const { isLogged, user, discordApiInfo } = useContext(discordContext)
 
     useEffect(() => {
         axios('https://genshinapi.ddns.net:3333/games').then(response => {
             setGames(response.data)
         })
+        isLogged ? setDiscordTag(`${discordApiInfo!.data?.username}#${discordApiInfo.data.discriminator}`) : ''
     }, [])
 
 
@@ -133,7 +135,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
 
                         <div className='flex flex-col gap-2'>
                             <label htmlFor="name">Seu nome (ou nickname)</label>
-                            <Input type="text" name="name" id="name" placeholder='Como te chamam dentro do game?' />
+                            <Input type="text" name="name" id="name" placeholder='Como te chamam dentro do game?' defaultValue={isLogged ? `${discordApiInfo!.data?.username}` : ''} />
                         </div>
 
                         <div className='grid grid-cols-2 gap-6'>
@@ -144,7 +146,7 @@ export function CreateAdModal({ setOpen }: CreateAdModalProps) {
 
                             <div className='flex flex-col gap-2'>
                                 <label htmlFor="discord">Qual seu discord?</label>
-                                <Input type="text" name="discord" id="discord" placeholder='Usuário#0000' onChange={handleDiscordChange} />
+                                <Input type="text" name="discord" id="discord" placeholder='Usuário#0000' onChange={handleDiscordChange} defaultValue={discordTag} />
                                 <ToastContainer />
                             </div>
 

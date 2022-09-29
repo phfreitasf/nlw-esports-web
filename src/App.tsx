@@ -4,15 +4,18 @@ import logoImg from './assets/logo.png'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
+
 import { CreateAdBanner } from './components/CreateAdBanner'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CreateAdModal } from './components/CreateAdModal'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Link } from 'react-router-dom';
+import { Link, useRoutes } from 'react-router-dom';
 
 import { settings } from './config/gamesSliderSettings'
 import { DownloadApkBanner } from './components/DownloadApkBanner'
 import axios from 'axios';
+import discordContext from './context/discordContext';
+
 
 
 
@@ -29,13 +32,23 @@ function App() {
   const [open, setOpen] = useState(false);
   const [isMoving, setIsMoving] = useState(false)
   const [games, setGames] = useState<Game[]>([])
+  const { isLogged, user, discordApiInfo } = useContext(discordContext)
+  const [imgLink, setImgLink] = useState('')
 
+  const getAllGames = async () => {
+    axios('https://genshinapi.ddns.net:3333/games')
+      .then(response =>
+        setGames(response.data.sort((a: Game, b: Game) => b._count.ads - (a._count.ads)))) //organiza os jogos por quantidade de anúncios
+  }
 
+  useEffect(() => {
+
+    if (isLogged) setImgLink(`https://cdn.discordapp.com/avatars/${discordApiInfo!.data?.id}/${discordApiInfo!.data?.avatar}.png`);
+  }, [discordApiInfo,isLogged])
 
 
   useEffect(() => {
-    axios('https://genshinapi.ddns.net:3333/games')
-      .then(response => setGames(response.data.sort((a: Game, b: Game) => b._count.ads - (a._count.ads)))) //organiza os jogos por quantidade de anúncios
+    getAllGames();
   }, [])
 
 
@@ -47,8 +60,15 @@ function App() {
       <h1 className='text-4xl sm:text-6xl text-white font-black mt-10'>
         Seu <span className='bg-nlw-gradient bg-clip-text text-transparent stroke'>duo</span> está aqui.
       </h1>
-
-      <div className="w-full mt-16 gd-carousel-wrapper">
+      {isLogged ?
+        <div className='flex items-center bg-gray-600 bg-opacity-50 rounded-lg gap-2 mt-5 pr-2'>
+          <img className='w-20 rounded-lg' src={imgLink} />
+          <span className='text-white'>Logado como :
+            <p>
+              {discordApiInfo.data.username}#{discordApiInfo.data.discriminator}
+            </p>
+          </span> </div> : null}
+      <div className="w-full mt-10 gd-carousel-wrapper">
         <Carousel className="gd-carousel" removeArrowOnDeviceType={["tablet", "medium", "mobile", "smartWatchHaha"]} {...settings}
           beforeChange={() => setIsMoving(true)}
           afterChange={() => setIsMoving(false)}>
