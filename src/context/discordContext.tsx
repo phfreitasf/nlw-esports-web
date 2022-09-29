@@ -38,9 +38,9 @@ export interface DiscordApiInfo {
 }
 
 
-const session: DiscordInfos = await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
-let apiDiscord : DiscordApiInfo | null = null
-if (session.data.access_token) apiDiscord = await axios('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
+const session : any = async () => await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
+let apiDiscord : any | null = async () => {}
+if (session.data.access_token) apiDiscord = async () => await axios('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
 
 // console.log(session)
 // console.log(apiDiscord)
