@@ -36,12 +36,22 @@ export interface DiscordApiInfo {
         mfa_enabled: boolean | '';
     }
 }
+let session: DiscordInfos | any = ''
 
+async function sessionId() {
 
-const session : any = async () => await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
-let apiDiscord : any | null = async () => {}
-if (session.data.access_token) apiDiscord = async () => await axios('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
+    session = await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
+}
 
+sessionId()
+
+let apiDiscord: DiscordApiInfo | null = null
+async function apiDiscordCall() {
+    if (session.data.access_token) {
+        apiDiscord = await axios.get('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
+    }
+}
+apiDiscordCall()
 // console.log(session)
 // console.log(apiDiscord)
 
