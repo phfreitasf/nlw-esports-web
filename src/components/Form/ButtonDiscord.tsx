@@ -10,7 +10,7 @@ export function ButtonDiscord({ ...rest }: ButtonFormProps) {
     async function handleDiscordLogin() {
 
         if (isLogged) {
-            await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/logout', { withCredentials: true })
+            let oi = await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/logout', { withCredentials: true })
             window.location.reload()
         }
         else {
