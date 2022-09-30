@@ -40,19 +40,17 @@ export interface DiscordApiInfo {
 
 
 
-const session = await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
 
-
-
+const session  = await axios.get('https://genshinapi.ddns.net:3333/api/auth/discord/status', { withCredentials: true })
 
 let apiDiscord: DiscordApiInfo | null = null
 
 if (session.data.access_token) {
-    apiDiscord = await axios.get('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
+apiDiscord = await axios.get('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
 }
 
-// console.log(session)
-// console.log(apiDiscord)
+console.log(session)
+console.log(apiDiscord)
 
 const discordContext = React.createContext<DiscordContext>({
     user: session.data,
