@@ -49,8 +49,8 @@ if (session.data.access_token) {
 apiDiscord = await axios.get('https://discord.com/api/users/@me', { headers: { 'Authorization': `Bearer ${session.data.access_token}` } })
 }
 
-console.log(session)
-console.log(apiDiscord)
+// console.log(session)
+// console.log(apiDiscord)
 
 const discordContext = React.createContext<DiscordContext>({
     user: session.data,
